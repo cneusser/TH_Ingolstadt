@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Christian Neusser, Bewerbung Professur Entrepreneurship, Technische Hochschule Ingolstadt</title>
+  <style>
+    :root {
+      --navy: #102A63;
+      --teal: #1F4E8C;
+      --gold: #F08200;
+      --magenta:#009BCD;
+      --light: #F4F7FA;
+      --text: #2C2C2C;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.7; color: var(--text); background: var(--white); }
+    nav { position: fixed; top: 0; left: 0; right: 0; background: var(--navy); z-index: 1000; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+    .nav-logo { color: var(--white); font-weight: 700; font-size: 1.05rem; letter-spacing: 0.03em; }
+    .nav-logo span { color: var(--gold); }
+    .hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 26px; height: 20px; cursor: pointer; }
+    .hamburger span { display: block; height: 3px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,8px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-8px); }
+    .nav-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .nav-menu.open { display: flex; }
+    .nav-menu a { color: var(--white); text-decoration: none; padding: 0.75rem 2rem; font-size: 0.95rem; border-left: 3px solid transparent; transition: all 0.2s; }
+    .nav-menu a:hover { background: rgba(255,255,255,0.08); border-left-color: var(--gold); color: var(--gold); }
+    main { padding-top: 60px; }
+    section { padding: 4.5rem 1.5rem; }
+    section:nth-child(even) { background: var(--light); }
+    .container { max-width: 960px; margin: 0 auto; }
+    h2.section-title { font-size: 1.75rem; color: var(--navy); margin-bottom: 0.4rem; font-weight: 700; }
+    .section-bar { width: 60px; height: 4px; background: var(--gold); margin-bottom: 2.5rem; border-radius: 2px; }
+    h3 { color: var(--teal); font-size: 1.15rem; margin-bottom: 0.5rem; }
+
+    #hero { background: linear-gradient(135deg, var(--navy) 0%, #0f2540 60%, var(--magenta) 100%); color: var(--white); padding: 6rem 1.5rem 5rem; text-align: center; }
+    #hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+    #hero .subtitle { font-size: 1.15rem; color: var(--gold); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    #hero .tagline { font-size: 1rem; color: rgba(255,255,255,0.80); max-width: 720px; margin: 0 auto 2rem; }
+    .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+    .badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: var(--white); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+    .badge.gold { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+    .badge.magenta { background: var(--magenta); border-color: var(--magenta); color: var(--white); }
+    .cta-btn { display: inline-block; margin-top: 2rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.75rem 2rem; border-radius: 4px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.03em; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.88; }
+
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    @media (max-width: 680px) { .profile-grid { grid-template-columns: 1fr; } }
+    .profile-card { background: var(--white); border-top: 4px solid var(--teal); padding: 1.5rem; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .profile-card .icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .profile-card h4 { color: var(--navy); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+    .profile-card p { font-size: 0.92rem; color: #444; }
+
+    .criteria-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-top: 1rem; font-size: 0.88rem; }
+    .criteria-table th { background: var(--navy); color: var(--white); text-align: left; padding: 0.8rem 1rem; font-weight: 700; font-size: 0.85rem; }
+    .criteria-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; vertical-align: top; }
+    .criteria-table tr:last-child td { border-bottom: none; }
+    .criteria-table .type { font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 10px; }
+    .type.muss { background: #DDF3E2; color: #2F7D32; }
+    .type.soll { background: #FFF3D9; color: #8a5a00; }
+    .status-full { color: #2F7D32; font-weight: 700; }
+    .status-part { color: #b07800; font-weight: 700; }
+
+    .acad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+    @media (max-width: 600px) { .acad-grid { grid-template-columns: 1fr; } }
+    .acad-card { border-left: 4px solid var(--gold); padding: 1rem 1.25rem; background: var(--white); border-radius: 0 4px 4px 0; box-shadow: 0 1px 5px rgba(0,0,0,0.06); }
+    .acad-card .degree { font-weight: 700; color: var(--navy); font-size: 1rem; }
+    .acad-card .inst { color: var(--teal); font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .acad-card .years { display: inline-block; background: var(--navy); color: var(--white); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 600; margin-bottom: 0.4rem; }
+    .acad-card .note { font-size: 0.85rem; color: #555; font-style: italic; }
+
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--teal), var(--navy)); border-radius: 2px; }
+    .tl-item { position: relative; margin-bottom: 2rem; padding-left: 1.5rem; }
+    .tl-item::before { content: ''; position: absolute; left: -2.15rem; top: 0.45rem; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--teal); }
+    .tl-date { font-size: 0.82rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+    .tl-title { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin-bottom: 0.1rem; }
+    .tl-org { font-size: 0.9rem; color: var(--teal); font-weight: 600; margin-bottom: 0.4rem; }
+    .tl-body { font-size: 0.88rem; color: #555; }
+    .tl-body strong { color: var(--navy); }
+
+    .teach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+    .teach-card { background: var(--white); border-radius: 6px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-top: 4px solid var(--teal); }
+    .teach-card .tc-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+    .teach-card h4 { color: var(--navy); font-size: 1rem; margin-bottom: 0.5rem; }
+    .teach-card p { font-size: 0.88rem; color: #555; }
+
+    .research-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    @media (max-width: 800px) { .research-grid { grid-template-columns: 1fr; } }
+    .research-card { background: var(--white); border-radius: 6px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .research-card h4 { color: var(--navy); margin-bottom: 0.6rem; font-size: 1rem; }
+    .research-card .rline { display: inline-block; background: var(--magenta); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .research-card ul { padding-left: 1.2rem; font-size: 0.88rem; color: #555; }
+    .research-card ul li { margin-bottom: 0.3rem; }
+    .journal-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .j-pill { background: var(--navy); color: white; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+    .pub-list { margin-top: 1.5rem; }
+    .pub-item { padding: 1.2rem 1.5rem; margin-bottom: 1rem; background: var(--white); border-left: 4px solid var(--teal); border-radius: 0 4px 4px 0; box-shadow: 0 1px 5px rgba(0,0,0,0.05); }
+    .pub-item.forthcoming { border-left-color: var(--gold); }
+    .pub-item.review { border-left-color: #aaa; }
+    .pub-status { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.15rem 0.6rem; border-radius: 10px; margin-bottom: 0.5rem; }
+    .pub-status.published { background: #e0f4ea; color: #1a7a3e; }
+    .pub-status.forthcoming { background: #fff3dc; color: #8a5a00; }
+    .pub-status.review { background: #f0f0f0; color: #666; }
+    .pub-ref { font-size: 0.9rem; color: #333; line-height: 1.6; }
+
+    /* Dissertation MSTM Deep-Dive */
+    .diss-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; margin-top: 1.5rem; }
+    @media (max-width: 720px) { .diss-grid { grid-template-columns: 1fr; } }
+    .diss-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-box { background: var(--navy); color: var(--white); padding: 1.25rem; border-radius: 6px; text-align: center; }
+    .stat-box .num { font-size: 2rem; font-weight: 800; color: var(--gold); display: block; }
+    .stat-box .lbl { font-size: 0.8rem; opacity: 0.85; }
+    .framework-box { background: linear-gradient(135deg, var(--navy), #0f2540); color: white; padding: 2rem; border-radius: 8px; text-align: center; }
+    .framework-box .fw-title { font-size: 1.3rem; font-weight: 800; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .framework-box .fw-sub { font-size: 0.8rem; opacity: 0.75; margin-bottom: 1.5rem; }
+    .mstm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .mstm-cell { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.20); padding: 0.75rem; border-radius: 4px; }
+    .mstm-cell .letter { font-size: 1.4rem; font-weight: 800; color: var(--gold); display: block; }
+    .mstm-cell .word { font-size: 0.78rem; opacity: 0.85; }
+    .phase-flow { display: flex; align-items: stretch; gap: 0; margin-top: 1.5rem; flex-wrap: wrap; }
+    .phase-item { flex: 1; min-width: 100px; background: var(--navy); color: white; padding: 1rem 0.75rem; text-align: center; position: relative; font-size: 0.8rem; }
+    .phase-item:not(:last-child)::after { content: '▶'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1rem; z-index: 2; }
+    .phase-item .phase-num { display: block; font-size: 0.65rem; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .phase-item .phase-name { display: block; font-weight: 700; font-size: 0.82rem; margin-bottom: 0.25rem; }
+    .phase-item .phase-desc { font-size: 0.72rem; opacity: 0.85; line-height: 1.4; }
+    .phase-item.phase-end { background: var(--magenta); }
+    @media (max-width: 640px) { .phase-flow { flex-direction: column; } .phase-item:not(:last-child)::after { content: '▼'; right: auto; left: 50%; bottom: -12px; top: auto; transform: translateX(-50%); } }
+    .relevance-box { background: var(--magenta); color: white; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; }
+    .relevance-box h4 { color: white; margin-bottom: 0.5rem; }
+    .relevance-box p { font-size: 0.9rem; opacity: 0.95; }
+
+    #kontakt { background: var(--navy); color: var(--white); }
+    #kontakt h2.section-title { color: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+    @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon { background: var(--gold); color: var(--navy); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; font-weight: 700; }
+    .contact-item a { color: var(--gold); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+    .contact-item p { font-size: 0.9rem; opacity: 0.85; }
+    footer { background: #0d1e30; color: rgba(255,255,255,0.5); text-align: center; padding: 1.5rem; font-size: 0.82rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+    blockquote.intro { border-left: 4px solid var(--gold); padding: 1rem 1.5rem; margin: 1.5rem 0; background: var(--white); font-style: italic; font-size: 1.05rem; color: var(--navy); border-radius: 0 4px 4px 0; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Dr. <span>Christian Neusser</span></div>
+  <div class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <div class="nav-menu" id="navMenu">
+    <a href="#profil"        onclick="closeMenu()">Profil</a>
+    <a href="#anforderungen" onclick="closeMenu()">Anforderungsprofil</a>
+    <a href="#lebenslauf"    onclick="closeMenu()">Lebenslauf</a>
+    <a href="#lehre"         onclick="closeMenu()">Lehrkonzept</a>
+    <a href="#forschung"     onclick="closeMenu()">Forschung und Transfer</a>
+    <a href="#publikationen" onclick="closeMenu()">Publikationen</a>
+    <a href="#dissertation"  onclick="closeMenu()">Dissertation MSTM</a>
+    <a href="#konferenzen"   onclick="closeMenu()">Konferenzen</a>
+    <a href="#papers"        onclick="closeMenu()">Papers in Arbeit</a>
+    <a href="#quellen"       onclick="closeMenu()">Quellen und Transparenz</a>
+    <a href="#kontakt"       onclick="closeMenu()">Kontakt</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-badges">
+      <span class="badge gold">Bewerbung W2, Fakultät Wirtschaftsingenieurwesen, Kennziffer 2016, Frist 14.09.2026</span>
+    </div>
+    <h1>Dr. Christian Neusser</h1>
+    <p class="subtitle">DBA, MBA, MSc, Dipl.-Betriebswirt (FH), Bankkaufmann</p>
+    <p class="tagline">
+      Bewerbung auf die Professur (m/w/d) „Entrepreneurship“ an der Technischen Hochschule Ingolstadt, Fakultät Wirtschaftsingenieurwesen.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">Gründer und Gesellschafter seit 2010</span>
+      <span class="badge">13 Beteiligungen, 3 Angel-Investments</span>
+      <span class="badge">DBA Straight Pass, Henley</span>
+      <span class="badge">Lehre für Wirtschaftsingenieure seit 2004</span>
+      <span class="badge">VentureLab: 5-Euro-Business mit eigenem Tracker</span>
+      <span class="badge magenta">MSTM-Framework (Neusser, 2026)</span>
+    </div>
+    <a href="#profil" class="cta-btn">Zur Bewerbung</a>
+  </div>
+</section>
+
+
+<section id="profil">
+  <div class="container">
+    <h2 class="section-title">Profil</h2>
+    <div class="section-bar"></div>
+    <blockquote class="intro">
+      „Unternehmertum habe ich zuerst von der Seite kennengelernt, die in Lehrbüchern zu kurz kommt: von der Finanzierung. Als kaufmännischer Geschäftsführer der FATH Group habe ich zwischen 2005 und 2016 vier Tochtergesellschaften und drei Joint Ventures in den USA, China und Ungarn aus dem Stand aufgebaut. 2010 habe ich mit der Phalanx GmbH mein eigenes Unternehmen gegründet. Ich führe es seit 16 Jahren als Alleingeschäftsführer, seit 2017 mit dreizehn Minderheitsbeteiligungen an mittelständischen Unternehmen und Start-ups.“
+    </blockquote>
+    <div class="diss-stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin:1.5rem 0 0.5rem;">
+      <div class="stat-box"><span class="num">16</span><span class="lbl">Jahre Gründer und Gesellschafter (Phalanx GmbH)</span></div>
+      <div class="stat-box"><span class="num">13</span><span class="lbl">Beteiligungen, dazu 3 Angel-Investments</span></div>
+      <div class="stat-box"><span class="num">7</span><span class="lbl">Tochtergesellschaften und Joint Ventures bei FATH aufgebaut</span></div>
+      <div class="stat-box"><span class="num">60+</span><span class="lbl">Gründungsteams an der FAU begleitet</span></div>
+      <div class="stat-box"><span class="num">102</span><span class="lbl">Interviews, 42 Unternehmen, MSTM</span></div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <div class="icon">🚀</div>
+        <h4>Entrepreneurship in eigener Verantwortung</h4>
+        <p>Gründer und Alleingeschäftsführer der Phalanx GmbH seit 2010, Aufbau des Finanzierungsmarktplatzes CapitalMatch, Business Angel bei Scopo, ika ika und Ens Dynamics, Beiräte bei Roboyo, Arconsis und Loonexx. Ausgründung der Plattform Islands Labs aus Küchenquelle (2021), Restrukturierung und Verkauf der Buchungsplattform CamperDays (2026), geordnete Stilllegung eines Direktvertriebs ohne Insolvenz. Der ganze Lebenszyklus, nicht nur der Anfang.</p>
+      </div>
+      <div class="profile-card">
+        <div class="icon">⚙️</div>
+        <h4>Technik und Wirtschaftsingenieurwesen aus der Praxis</h4>
+        <p>Zwölf Jahre Geschäftsführung eines Maschinenbauzulieferers mit Werken in vier Ländern, Restrukturierung von fünf HVAC-Werken der Groupe Atlantic, CRO bei Oerlikon. Projektmanagement-Ausbildung von Ingenieuren bei Siemens, Rheinmetall, Pierburg und Heitec. Seit 2004 Lehre im dualen Bachelor Wirtschaftsingenieurwesen der DHBW Stuttgart.</p>
+      </div>
+      <div class="profile-card">
+        <div class="icon">🎓</div>
+        <h4>Forschung und Lehre, deutsch und englisch</h4>
+        <p>DBA mit Straight Pass (Henley Business School, University of Reading, 01/2026), Habilitation am Lehrstuhl Family Business &amp; Entrepreneurial Orientation der Universität Siegen. Publikationen u. a. in Small Business Economics, ZfKE und Journal of Family Business Strategy; Reviewer für Small Business Economics und Entrepreneurship Theory and Practice. Über 20 Jahre Hochschullehre, seit 2023 auf Englisch an der Henley Business School.</p>
+      </div>
+    </div>
+    <div class="relevance-box" style="margin-top:2rem;">
+      <h4>Entrepreneurship als Entscheidungsdisziplin</h4>
+      <p>Ich bin kein Marketingprofessor und habe kein MINT-Studium. Ich bin derjenige, der Gesellschaftsverträge unterschrieben, Term Sheets verhandelt, Budgets verantwortet und am Monatsende gesehen hat, was davon Umsatz wurde. Keine meiner Gründungen, Beteiligungen oder Ausgründungen ist an der Idee gescheitert oder gelungen. Entscheidend waren die Entscheidung unter Unsicherheit, das verkraftbare Risiko und die Frage, wer wann das Mandat hatte. Diese Perspektive fehlt Studierenden häufiger als die Methode. Sie ist mein Lehrgebiet.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="anforderungen">
+  <div class="container">
+    <h2 class="section-title">Anforderungsprofil: Passung im Überblick</h2>
+    <div class="section-bar"></div>
+    <p>Die Tabelle nimmt die Kriterien der Ausschreibung (Kennziffer 2016) auf und ordnet jedem den konkreten Beleg aus meinem Profil zu. Offene Punkte sind als solche gekennzeichnet.</p>
+    <table class="criteria-table">
+      <thead>
+        <tr><th>Kriterium</th><th>Typ</th><th>Beleg</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Abgeschlossenes einschlägiges Hochschulstudium</td><td><span class="type muss">Muss</span></td><td>Dipl.-Betriebswirt (FH) Nürnberg 2005 (Rechnungswesen, Controlling, Steuern); Executive MBA und MSc Henley Business School</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Pädagogische Eignung, Nachweis in der Probelehrveranstaltung</td><td><span class="type muss">Muss</span></td><td>Hochschullehre seit 10/2004 ohne Unterbrechung; DHBW-Evaluation SoSe 2026 Unternehmensführung 6,3 von 7 (n = 14), SoSe 2025 Finanz- und Rechnungswesen 6,4 von 7 (n = 16); Henley PGCert Coaching for Behavioural Change</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Besondere Befähigung zu wissenschaftlicher Arbeit (Promotion)</td><td><span class="type muss">Muss</span></td><td>DBA University of Reading, Straight Pass, verliehen 09.01.2026; laufende Habilitation an der Universität Siegen, Lehrstuhl Family Business &amp; Entrepreneurial Orientation</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Mindestens fünf Jahre berufliche Praxis im Bereich Entrepreneurship, davon drei außerhalb der Hochschule (z. B. eigene Gründung, leitende Mitarbeit in Start-ups)</td><td><span class="type muss">Muss</span></td><td>Gründer und Alleingeschäftsführer der Phalanx GmbH seit 05/2010; seit 2017 dreizehn Minderheitsbeteiligungen; Aufbau CapitalMatch; Business Angel (Scopo, ika ika, Ens Dynamics); Beiräte Roboyo, Arconsis, Loonexx; vier Tochtergesellschaften und drei Joint Ventures bei FATH; Ausgründung Islands Labs 2021; CamperDays 2026. Durchgehend außerhalb der Hochschule</td><td class="status-full">Erfüllt, 16 Jahre</td></tr>
+        <tr><td>Umfassende Kenntnisse in Entrepreneurship, Produktkonzeptentwicklung, Innovationsmanagement, strategischem und digitalem Marketing</td><td><span class="type muss">Muss</span></td><td>Produktkonzepte aus CapitalMatch und Islands Labs; digitales Marketing aus der Digitalisierung des Vertriebs bei Küchenquelle, Hubspot bei FATH und dem Betrieb der Buchungsplattform CamperDays; Innovationsmanagement als Forschungsfeld (Small Business Economics, ZfKE, EURAM-Track Entrepreneurial Behaviour)</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Affinität zu Technik und Technologie (MINT-Studium oder praktische Erfahrung)</td><td><span class="type soll">Soll</span></td><td>Kein MINT-Studium. Zwölf Jahre Maschinenbau (FATH), Oerlikon, fünf HVAC-Werke der Groupe Atlantic; Trainer für Ingenieure bei Siemens, Rheinmetall, Pierburg; Lehre für Wirtschaftsingenieure seit 2004; Beirat Roboyo (intelligente Automatisierung); GPM/IPMA Level B, Honeywell Lean Expert</td><td class="status-full">Erfüllt über Praxis</td></tr>
+        <tr><td>Deutsch- und englischsprachige Lehre in deutschen und internationalen Studiengängen</td><td><span class="type muss">Muss</span></td><td>DHBW Stuttgart seit 2004 deutsch (6 SWS im Block), Henley Business School seit 2023 englisch (4 SWS im Block), IU dual und online (18 SWS), DHBW CAS Master; Portfolio in beiden Sprachen</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Lehrinhalte mit digitalen Medien, moderne Lehr- und Prüfungsmethoden</td><td><span class="type muss">Muss</span></td><td>VentureLab: 5-Euro-Business mit selbst entwickeltem Web-Tracker (DHBW SoSe 2026, Evaluation 6,3 von 7); eigene Lehrvideos seit 2020, Online-Lehre an der IU, generative KI als Lernziel seit 2023, Planspiel TOPSIM, INTERLab, Term-Sheet-Verhandlung und Investorengremium als Prüfungsformate</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Betreuung von Abschlussarbeiten, Seminaren, Projekten</td><td><span class="type muss">Muss</span></td><td>Abschlussarbeiten an DHBW, IU und Henley (DBA); über 60 Gründungsteams an der FAU Erlangen-Nürnberg 2005 bis 2021</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Initiierung und Unterstützung unternehmerischer Projekte an der THI</td><td><span class="type muss">Muss</span></td><td>Rund 150 mittelständische Unternehmen als Pilotkunden und Partner, Henley Business Angels und Netzwerk Nordbayern als Investorenzugang; Coach und Juror für TH-Idea und 5-Euro-Business; Vorschlag Technology Venture Lab mit Startup Center und brigk</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Aufgaben in der akademischen Selbstverwaltung</td><td><span class="type muss">Muss</span></td><td>Erfahrung aus Beiräten, Kuratorien und Vorstandsarbeit; ausdrückliche Bereitschaft; Präsenz während der Vorlesungszeit, gut eine Stunde von Erlangen</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Mitarbeit an Forschungsvorhaben im Berufungsgebiet und deren Publikation</td><td><span class="type muss">Muss</span></td><td>JFBS 2025; Small Business Economics und ZfKE im Erscheinen; Family Business Review Revise and Resubmit; drei Forschungslinien zu Übergängen als unternehmerischer Erneuerung, Business Angels und technologiebasierten Gründungen</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Unterstützung der Weiterbildungsaktivitäten</td><td><span class="type muss">Muss</span></td><td>Über 100 Seminare und mehr als 1.000 zertifizierte Teilnehmende als Trainer; Master am DHBW CAS; Angebot für das MBA-Modul Innovationsmanagement und ein Zertifikat Corporate Venturing</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Sehr gute Deutsch- und Englischkenntnisse</td><td><span class="type muss">Muss</span></td><td>Deutsch Muttersprache; Englisch C1/C2, Lehre und Publikationen auf Englisch</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Freude an Teamarbeit und an der Weiterentwicklung des Lehrgebiets</td><td><span class="type muss">Muss</span></td><td>Führung von Teams bis 1.500 Mitarbeitende in fünf Ländern; Track-Organisation bei EURAM und NCSB; Abstimmung mit Kolleginnen und Kollegen der Fakultät und dem Startup Center im Lehrkonzept</td><td class="status-full">Erfüllt</td></tr>
+        <tr><td>Einwerbung von Drittmitteln als Principal Investigator</td><td><span class="type soll">Vorteil</span></td><td>Bislang nicht eingeworben; Antragserfahrung aus ZIM, BAFA, KfW und Horizon Europe in der Praxis; Mitwirkung an den Förderanträgen Konti-AI (BMWE, IPCEI KI) und Fritz Thyssen Stiftung in Siegen; gestaffelter Fahrplan über 600.000 EUR in fünf Jahren</td><td class="status-part">In Aufbau</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="lebenslauf">
+  <div class="container">
+    <h2 class="section-title">Lebenslauf</h2>
+    <div class="section-bar"></div>
+
+    <h3 style="margin-bottom:1rem;">Akademische Qualifikationen</h3>
+    <div class="acad-grid">
+      <div class="acad-card">
+        <span class="years">04/2021 bis 01/2026</span>
+        <div class="degree">Doctor of Business Administration (DBA)</div>
+        <div class="inst">Henley Business School, University of Reading, UK</div>
+        <p class="note">„Navigating External Succession in German Mittelstand Family-Owned Manufacturing Companies“. <strong>Straight Pass</strong>. Entwicklung des MSTM-Frameworks. Betreuer: Prof. Dr. Maksim Belitski.</p>
+      </div>
+      <div class="acad-card">
+        <span class="years">seit 2026</span>
+        <div class="degree">Habilitation, wiss. Mitarbeiter (50 %)</div>
+        <div class="inst">Universität Siegen, Lehrstuhl Family Business &amp; Entrepreneurial Orientation, Prof. Dr. Sascha Kraus</div>
+        <p class="note">Kumulative Habilitation zu Governance, Nachfolge und unternehmerischer Erneuerung in eigentümergeführten Unternehmen.</p>
+      </div>
+      <div class="acad-card">
+        <span class="years">10/2018 bis 04/2021</span>
+        <div class="degree">MSc Business Management Research (Merit)</div>
+        <div class="inst">Henley Business School, University of Reading, UK</div>
+        <p class="note">Methodische Grundlage der späteren DBA-Forschung.</p>
+      </div>
+      <div class="acad-card">
+        <span class="years">04/2014 bis 09/2017</span>
+        <div class="degree">Executive MBA (Merit)</div>
+        <div class="inst">Henley Business School, University of Reading, UK</div>
+        <p class="note">Leadership and General Management.</p>
+      </div>
+      <div class="acad-card">
+        <span class="years">10/2001 bis 06/2005</span>
+        <div class="degree">Diplom-Betriebswirt (FH)</div>
+        <div class="inst">Georg-Simon-Ohm Fachhochschule Nürnberg</div>
+        <p class="note">Schwerpunkte Rechnungswesen, Controlling, Steuern. Diplomarbeit bei Pfleiderer zur Umstellung von US-GAAP auf IFRS.</p>
+      </div>
+      <div class="acad-card">
+        <span class="years">09/1998 bis 07/2000</span>
+        <div class="degree">Bankkaufmann</div>
+        <div class="inst">Stadt- und Kreissparkasse Erlangen</div>
+        <p class="note">Note 1,9. Teilprojektleitung Kreditscoring.</p>
+      </div>
+    </div>
+
+
+    <h3 style="margin:2.5rem 0 0.5rem;">Beruflicher Werdegang</h3>
+    <p style="font-size:0.85rem; color:#666; margin-bottom:1.5rem;">Unternehmerische Verantwortung je Station ist hervorgehoben.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">seit 05/2010</div>
+        <div class="tl-title">Gründer und Alleingeschäftsführer</div>
+        <div class="tl-org">Phalanx GmbH, Nürnberg</div>
+        <div class="tl-body">Beratung und Beteiligung im Mittelstand: Transformation, Nachfolge, Restrukturierung, Transaktion. <strong>Seit 2017 dreizehn Minderheitsbeteiligungen an mittelständischen Unternehmen und Start-ups; Aufbau des Finanzierungsmarktplatzes CapitalMatch von der Idee bis zur Plattform</strong>; Prozessprojekte für COMPEON, FinMatch und Teambank; rund ein Dutzend Sanierungsgutachten nach IDW S6; Anträge in ZIM, BAFA, KfW und Horizon Europe.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">04/2026 bis 08/2026</div>
+        <div class="tl-title">Geschäftsführer und Chief Restructuring Officer</div>
+        <div class="tl-org">CamperDays GmbH, Köln, digitale Buchungsplattform für Wohnmobilreisen</div>
+        <div class="tl-body">Übernahme der Plattform aus dem Umfeld der ProSiebenSat.1-Gruppe im März 2026 (über INOS 26-009 GmbH). <strong>Restrukturierung von Geschäftsmodell und Kostenbasis, Verkaufsprozess mit Datenraum und SPA-Verhandlung, Closing des Weiterverkaufs an einen strategischen Erwerber im August 2026.</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">11/2024 bis 08/2025</div>
+        <div class="tl-title">Chief Restructuring Officer und Managing Director HVAC</div>
+        <div class="tl-org">Groupe Atlantic S.A., Paris, 2,8 Mrd. Euro, 13.000 Mitarbeitende</div>
+        <div class="tl-body">Restrukturierung von fünf Werken in Deutschland, Österreich, Frankreich, Polen und Rumänien. Konzernweites PMO, Einsparung über 10 Mio. Euro pro Jahr. Personalverantwortung für 1.500 Mitarbeitende, Budget 100 Mio. Euro.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">09/2024 bis 03/2025</div>
+        <div class="tl-title">Chief Restructuring Officer und M&amp;A-Advisor</div>
+        <div class="tl-org">Fensterhersteller (Rehau), Teilbereich rund 90 Mio. Euro</div>
+        <div class="tl-body"><strong>Carve-out als Stand-alone-Unternehmen, Verkaufsprozess bis Signing.</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">01/2024 bis 12/2024</div>
+        <div class="tl-title">Chief Restructuring Officer</div>
+        <div class="tl-org">Oerlikon AG, Pfäffikon, 1,5 Mrd. Euro</div>
+        <div class="tl-body">Neuordnung der Passivseite, Verhandlungen mit Banken, Gläubigern und Betriebsrat, Schließung von fünf deutschen Produktionsstandorten, PMO.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">08/2023 bis 04/2024</div>
+        <div class="tl-title">Chief Restructuring Officer</div>
+        <div class="tl-org">V. Fraas GmbH, Helmbrechts, Textil, 80 Mio. Euro, 400 Mitarbeitende</div>
+        <div class="tl-body">Fortführungsprognose nach IDW S11, Sanierungsgutachten nach IDW S6, Neuschnitt der Organisation.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">10/2022 bis 04/2023</div>
+        <div class="tl-title">Chief Restructuring Officer und Liquidator</div>
+        <div class="tl-org">Konsumgüter-Direktvertrieb, Bayern, 20 Mio. Euro, 85 Mitarbeitende</div>
+        <div class="tl-body"><strong>Geordnete Stilllegung ohne Insolvenz in acht Monaten</strong>, einvernehmlicher Sozialplan, Restwert rund 6 Mio. Euro.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">10/2020 bis 09/2022</div>
+        <div class="tl-title">Geschäftsführer und Chief Restructuring Officer</div>
+        <div class="tl-org">Küchenquelle, Islands Labs, Home Furniture Group, Direktvertrieb, 120 Mio. Euro</div>
+        <div class="tl-body"><strong>Digitalisierung des Vertriebs, Ausgründung der Software-Plattform Islands Labs (2021)</strong>, Neuordnung von Eigen- und Fremdkapital rund 40 Mio. Euro, Sparprogramm 46 Mio. Euro.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">01/2020 bis 12/2020</div>
+        <div class="tl-title">Sanierungsmanager (CRO) mit Generalvollmacht</div>
+        <div class="tl-org">Innovationszentrum Telekommunikationstechnik GmbH, Erlangen, 11 Mio. Euro</div>
+        <div class="tl-body">IDW S11 und S6, Überbrückungsdarlehen 5 Mio. Euro, <strong>neues Eigenkapital 4 Mio. Euro von neuen Investoren</strong>.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">07/2019 bis 04/2020</div>
+        <div class="tl-title">Projektleiter Konzernstrategie Bus</div>
+        <div class="tl-org">DB Regio AG, Frankfurt, 8,7 Mrd. Euro, 35.600 Mitarbeitende</div>
+        <div class="tl-body">Target Operating Model und Standardprozessmodell für rund 30 Busgesellschaften, neues Organisations- und Führungsmodell, PMO und Project Governance.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">01/2017 bis 08/2017</div>
+        <div class="tl-title">CFO Riedel und CEO Nachtmann</div>
+        <div class="tl-org">Riedel Glas und Nachtmann Gruppe, familiengeführt, 350 Mio. Euro, 2.000 Mitarbeitende</div>
+        <div class="tl-body">Refinanzierung der Working-Capital-Linien über 20 Mio. Euro, Treasury und Purchase-to-Pay, <strong>Begleitung des Generationenwechsels</strong>.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">06/2015 bis 12/2015</div>
+        <div class="tl-title">Projektleiter und Mediator</div>
+        <div class="tl-org">Kindermöbelhersteller, München</div>
+        <div class="tl-body"><strong>Unternehmensnachfolge per Management-Buy-in</strong>: Due Diligence, Vertragsverhandlung, Finanzierung, Day One.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">05/2005 bis 12/2016</div>
+        <div class="tl-title">Kaufmännischer Geschäftsführer und CRO</div>
+        <div class="tl-org">FATH Group, familiengeführter Maschinenbau, Spalt, Orlando, Budapest, Shanghai</div>
+        <div class="tl-body">Zwölf Jahre in der Geschäftsführung. <strong>Aufbau von vier Tochtergesellschaften und drei Joint Ventures in den USA, China und Ungarn, Finanzierung und Markteintritt</strong>; SAP FI/CO, Konzernkonsolidierung nach IFRS, Shared Service Center Ungarn, Rekapitalisierungen über 3 und über 7 Mio. Euro.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2010 bis 2013</div>
+        <div class="tl-title">Carve-out Manager und Leiter PMO</div>
+        <div class="tl-org">Siemens AG (über Roland Berger) und Honeywell (über Bain)</div>
+        <div class="tl-body">Carve-out-Regeln und PMO, Verlagerung eines Shared Service Centers von Indien nach Polen, Post-Merger-Integration mit über 60 Projekten und Einsparungen von 450 Mio. Euro in zwölf Monaten.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">05/2002 bis 04/2004</div>
+        <div class="tl-title">Senior Associate Transaction Services</div>
+        <div class="tl-org">KPMG AG, Frankfurt</div>
+        <div class="tl-body">Financial Due Diligence, Bilanzanalyse, Unternehmensbewertung, Begleitung von Transaktionen bis 1,6 Mrd. Euro.</div>
+      </div>
+    </div>
+
+    <h3 style="margin:2.5rem 0 1rem;">Hochschullehre</h3>
+    <div class="teach-grid">
+      <div class="teach-card"><div class="tc-icon">🏫</div><h4>DHBW Stuttgart, seit 10/2004</h4><p>Dualer Bachelor Wirtschaftsingenieurwesen, 6 SWS im Block: Finanz- und Rechnungswesen, Kostenrechnung, Controlling, Unternehmensführung, Verhandlungsführung, Unternehmensplanspiel TOPSIM, INTERLab. Seit SoSe 2026 VentureLab (5-Euro-Business mit eigenem Tracker). Evaluation SoSe 2026: Gesamtzufriedenheit 6,3 von 7 (n = 14), SoSe 2025: 6,4 von 7.</p></div>
+      <div class="teach-card"><div class="tc-icon">🎓</div><h4>DHBW CAS Heilbronn, seit 04/2019</h4><p>Master Technik-Management: Wertorientierte Unternehmensführung, Unternehmensführung.</p></div>
+      <div class="teach-card"><div class="tc-icon">🇬🇧</div><h4>Henley Business School, seit 04/2023</h4><p>4 SWS im Block: Corporate Finance, Leadership and Change, Succession Studies, Betreuung von DBA-Arbeiten. Lehre vollständig auf Englisch.</p></div>
+      <div class="teach-card"><div class="tc-icon">💻</div><h4>IU Internationale Hochschule, seit 01/2026</h4><p>Duales Studium in Präsenz und Online-Studium, 18 SWS: Buchführung und Bilanzierung, Investition und Finanzierung, Unternehmensbewertung, Personal- und Unternehmensführung in Wirtschaftsinformatik, Wirtschaftsingenieurwesen, Gesundheitsmanagement und Allgemeiner BWL, mit eigenen Schwerpunkten je Modulhandbuch.</p></div>
+      <div class="teach-card"><div class="tc-icon">💡</div><h4>FAU Erlangen-Nürnberg, 10/2005 bis 09/2021</h4><p>Dozent Industriebetriebslehre: Business Planning und Entrepreneurship, Projektmanagement. Begleitung von über 60 Gründungsteams aus Wirtschafts-, Ingenieur- und Naturwissenschaften.</p></div>
+      <div class="teach-card"><div class="tc-icon">🔬</div><h4>Universität Siegen und Witten/Herdecke, seit 2025</h4><p>Unternehmensnachfolge in Familienunternehmen; Organizational Ecology in der Familienunternehmensforschung.</p></div>
+      <div class="teach-card"><div class="tc-icon">🛠️</div><h4>Ottmann &amp; Partner, seit 06/2010</h4><p>Trainer, Coach und Sparringspartner: über 100 Seminare, mehr als 1.000 zertifizierte Teilnehmende (GPM/IPMA, PMI, IAPM); Führungskräfteentwicklung auf allen Führungsebenen für Siemens, Heitec, Rheinmetall, Pierburg, Lufthansa und die Deutsche Bahn.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="lehre">
+  <div class="container">
+    <h2 class="section-title">Lehrkonzept für die Fakultät Wirtschaftsingenieurwesen</h2>
+    <div class="section-bar"></div>
+    <p style="margin-bottom:1rem;">
+      Wirtschaftsingenieure lernen zuverlässig, wie man einen Businessplan schreibt. Was sie seltener lernen, ist die Frage, die jeder Investor und jede Bank zuerst stellt:
+      Was passiert mit diesem Plan, wenn die erste Annahme kippt, und wer trägt dann den Verlust? Mein Lehrgebiet ist Entrepreneurship als Entscheidungsdisziplin.
+      Didaktische Grundlage: Constructive Alignment (Biggs und Tang), Effectuation und Lean Startup (Sarasvathy, Ries, Blank) als Handlungslogik unter Unsicherheit,
+      erfahrungsbasiertes Lernen (Kolb, Revans). Die Module unten sind die realen Module der Fakultät (Modulhandbuch M. Eng. WI WiSe 2025/26, Studiengangsseiten).
+    </p>
+    <div class="teach-grid">
+      <div class="teach-card"><div class="tc-icon">🚀</div><h4>Innovation Management &amp; Entrepreneurship</h4><p>M. Eng. WI, 1. Semester, Wahl. Entrepreneurship-Konzepte, Innovationsquellen, Geschäftsmodell, Produktentwicklung und Marketing in Start-ups, Finanzierung, Business Plan, Krisenmanagement, Schutzrechte. Erweiterung: Term Sheet, Cap Table und Exit-Klauseln an einem realen Beteiligungsfall. Projektarbeit mit Präsentation vor einem Investorengremium.</p></div>
+      <div class="teach-card"><div class="tc-icon">🧩</div><h4>Produkt- und Innovationsmanagement, Vertiefung Business und Management</h4><p>B. Eng. WI: Unternehmensführung, Produktmanagement, Vertrieb. Vom Kundenproblem zum Produktkonzept: Customer Discovery, Value Proposition, Prototyp, Preis, Markteintritt. Fallbasis: CapitalMatch, Islands Labs, Markteintritt von FATH in China und den USA.</p></div>
+      <div class="teach-card"><div class="tc-icon">📊</div><h4>Marketing, Kostenmanagement und Controlling, Projektmanagement</h4><p>B. Eng. WI, Grundlagen. Aus 22 Jahren DHBW-Lehre für Wirtschaftsingenieure und der Trainertätigkeit (GPM/IPMA, PMI). Entrepreneurship-Bezug: Was kostet ein Produkt wirklich, welche Kennzahl entscheidet über Weitermachen oder Abbruch.</p></div>
+      <div class="teach-card"><div class="tc-icon">🇬🇧</div><h4>Technology Entrepreneurship and Venture Finance</h4><p>M. Sc. Engineering and Management, M. Sc. Global Foresight and Technology Management, englisch. Technologiebewertung und Kommerzialisierung, Finanzierungsstufen von Pre-Seed bis Series A, VC-Methode, DCF und Multiples, Förderkulisse, Corporate Venturing. Studierende erstellen ein Term Sheet und verhandeln es gegen ein zweites Team.</p></div>
+      <div class="teach-card"><div class="tc-icon">🎯</div><h4>Erstsemestereinführung und Weiterbildung</h4><p>Mitwirkung an der Businessplan-Aufgabe der Erstsemester mit Fällen aus der Region. In der Weiterbildung Angebot für das MBA-Modul Innovationsmanagement und ein berufsbegleitendes Zertifikat „Corporate Venturing und Nachfolge im Mittelstand“.</p></div>
+      <div class="teach-card"><div class="tc-icon">🏗️</div><h4>Neu: Venture Finance und Corporate Venturing im Mittelstand; Technology Venture Lab</h4><p>Wahlmodul (deutsch oder englisch): Wie Mittelständler Ausgründungen, Beteiligungen und Management-Buy-ins finanzieren und steuern. Venture Lab als Capstone mit Startup Center und brigk: Teams entwickeln ein technologiebasiertes Venture von der Idee bis zur Finanzierung, Abschluss auf einem Demo Day vor Investoren.</p></div>
+    </div>
+    <div style="margin-top:2rem; background:var(--white); padding:1.5rem; border-radius:6px; box-shadow:0 1px 5px rgba(0,0,0,0.07);">
+      <h3>Die Investorenentscheidung als Prüfungsformat</h3>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">Die Fallarbeit endet nicht mit einem Pitch, sondern mit einer Entscheidungsvorlage. Studierende verteidigen ein Term Sheet, einen Business Case oder eine Abbruchempfehlung vor einem Gremium aus Lehrenden und, wo es sich einrichten lässt, aus Business Angels und Geschäftsführern aus meinem Netzwerk. Bewertet wird die Fähigkeit, Annahmen offenzulegen, den verkraftbaren Verlust zu beziffern und die Frage zu beantworten, woran man nach zwölf Monaten erkennen würde, dass die Entscheidung falsch war.</p>
+      <h3 style="margin-top:1.25rem;">Eigene Fälle statt Lehrbuchfälle</h3>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">Ein Pool anonymisierter Lehrfälle aus selbst verantworteten Gründungen, Beteiligungen und Transaktionen: der Aufbau der FATH-Tochter in Shanghai (Joint Venture, Cap Table, kulturelles Risiko), die Ausgründung von Islands Labs aus Küchenquelle (Plattformmodell, Pivot, Term Sheet), CapitalMatch (Marktplatz mit eigenem Lehrgeld), der Verkauf von CamperDays 2026 (Datenraum, SPA, Käuferlogik) und die geordnete Stilllegung eines Direktvertriebs (wann Aufhören die unternehmerische Entscheidung ist). Erweiterung mit Unternehmen der Region Ingolstadt über Projekt- und Abschlussarbeiten.</p>
+      <h3 style="margin-top:1.25rem;">VentureLab: das 5-Euro-Business als Realexperiment</h3>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">Im Sommersemester 2026 habe ich im Modul Unternehmensführung des dualen Bachelors Wirtschaftsingenieurwesen der DHBW Stuttgart das VentureLab eingeführt: 20 Studierende in fünf Teams (AfterStudy, Service Connect, Campus-Pfand, PrintMyMeme, Prepify) gründen mit je fünf Euro Startkapital ein echtes Micro-Business, führen es acht Wochen lang mit den Rollen CEO, CFO, CMO und COO, durchlaufen Design-Thinking-Workshop, Business Model Canvas, Mid-Term Review und die Entscheidung Scale or Pivot und präsentieren am Ende vor Publikum. Mindestens die Hälfte der Präsenzzeit gehört dem Projekt, der Gewinn beeinflusst die Note nicht. Dafür habe ich den <a href="https://cneusser.github.io/Venture-Labs/" target="_blank" style="color:var(--teal); font-weight:600;">VentureLab-Tracker</a> entwickelt: eine Web-App, in der die Teams Buchungen mit Belegen erfassen, Wochenberichte einreichen, persönliche Wochenreflexionen schreiben, die nur der Dozent sieht, Ranking und Stimmungsbarometer sehen und Feedback erhalten; mehrere Hochschulen und Spiele lassen sich parallel anlegen, die Oberfläche gibt es auf Deutsch und Englisch.</p>
+      <div class="diss-stats" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); margin:1rem 0;">
+        <div class="stat-box"><span class="num">6,3</span><span class="lbl">von 7 Gesamtzufriedenheit, SoSe 2026, n = 14</span></div>
+        <div class="stat-box"><span class="num">6,8</span><span class="lbl">von 7 für Feedback; 92,9 % vergeben 6 oder 7</span></div>
+        <div class="stat-box"><span class="num">82 %</span><span class="lbl">berichten gesteigerte Selbstwirksamkeit</span></div>
+        <div class="stat-box"><span class="num">94 %</span><span class="lbl">Kompetenzzuwachs in Effectuation-Logik</span></div>
+      </div>
+      <p style="font-size:0.9rem;">Die Freitexte loben Praxisnähe und Unternehmensexkursion. Die 113 Wochenreflexionen der Teilnehmenden werten Helmut Wittenzeller und ich derzeit aus; die Voranalyse zeigt, dass die Reflexionstiefe nach Hatton und Smith über die sieben Wochen von 1,31 auf 1,95 steigt und die Teamstimmung als U-Kurve mit Tief in Woche 4 verläuft. Der Aufsatz dazu ist für Simulation &amp; Gaming geplant (Einreichung Anfang 2027). Für die THI sehe ich drei Weiterentwicklungen: den Tracker als Plattform für das 5-Euro-Business des Startup Centers und für das Technology Venture Lab; KI-gestützte Auswertung der Wochenreflexionen als Feedback-Assistent für Lehrende und als anonymisierter Datensatz für die Entrepreneurship-Education-Forschung; ein Investoren- und Mentorenmodul mit Demo Day vor Business Angels und Übergang der besten Teams in Startup Center und brigk.</p>
+      <h3 style="margin-top:1.25rem;">Digitale Medien und generative KI als Lernziel</h3>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">Eigene Lehrvideos seit 2020, duale Präsenz- und Online-Lehre an der IU seit 2026. Seit 2023 setze ich KI-Werkzeuge in der Lehre ein und mache den Umgang damit prüfbar: Studierende lassen sich einen Businessplan, eine Marktanalyse oder eine Bewertung erzeugen, prüfen das Ergebnis gegen Quelle und Daten und dokumentieren, wo das Modell irrt. Für Gründerinnen und Gründer ist das der Alltag mit Investoren, die genau diese Dokumente lesen.</p>
+      <h3 style="margin-top:1.25rem;">Unternehmerische Projekte an der THI</h3>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">Das Startup Center, brigk auf dem Campus und die Entrepreneurship Academy der Allianz ACE²-EU sind Strukturen, die ich füttern kann: mit Fällen, mit Kapital und mit Kontakten. Ich stelle mich als Coach und Juror für TH-Idea und das 5-Euro-Business zur Verfügung, bringe rund 150 mittelständische Unternehmen als Pilotkunden und Partner für Abschlussarbeiten ein und öffne über die Henley Business Angels und das Netzwerk Nordbayern den Zugang zu Investoren.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="forschung">
+  <div class="container">
+    <h2 class="section-title">Forschung und Transfer: drei Linien</h2>
+    <div class="section-bar"></div>
+    <p style="margin-bottom:1.5rem;">
+      Mein Forschungsprogramm untersucht, wie unternehmerische Erneuerung in eigentümergeführten Unternehmen entsteht, finanziert und institutionalisiert wird.
+      Die These aus sechzehn Jahren als Gründer, Gesellschafter und Business Angel: Externe Nachfolge, Management-Buy-in, Ausgründung und Corporate Venturing sind Formen unternehmerischer Erneuerung
+      und folgen denselben Mustern wie eine Gründung. Die Entrepreneurship-Forschung behandelt Gründung und Übergabe bislang weitgehend getrennt; der Mittelstand, in dem beides ständig zusammenfällt,
+      ist ihr größtes und am wenigsten erforschtes Labor.
+    </p>
+    <div class="research-grid">
+      <div class="research-card">
+        <span class="rline">Linie A</span>
+        <h4>Übergänge als unternehmerische Erneuerung</h4>
+        <ul>
+          <li>Welche Konfigurationen aus Mandat, Struktur, Vertrauen und Mechanismen unterscheiden gelungene von gescheiterten Ausgründungen, Buy-ins und externen Nachfolgen?</li>
+          <li>Manuskript liegt vor: „From Succession to Regeneration“ (mit M. Belitski, ACERE 2026, Ziel ET&amp;P)</li>
+          <li>Design: MSTM auf 15 bis 20 Ausgründungen und Buy-ins in Bayern, QCA, Succession Readiness Index (mit A. De Massis), PLS-SEM</li>
+        </ul>
+      </div>
+      <div class="research-card">
+        <span class="rline">Linie B</span>
+        <h4>Ehemalige Eigentümer als Business Angels</h4>
+        <ul>
+          <li>Warum werden manche Eigentümer nach Verkauf oder Übergabe zu Business Angels, und wie unterscheiden sich ihre Investitionsentscheidungen?</li>
+          <li>Mit Christoph Boeckhaus: Überarbeitung von „Finding What Was Lost?“ auf Basis von 33 Interviews mit 25 Angels (Major Revision, ZfKE); Aufbau eines Angel-Panels</li>
+          <li>Feldzugang: Henley Business Angels, Netzwerk Nordbayern, eigene Beteiligungen. Design: Panel plus Conjoint-Experimente</li>
+        </ul>
+      </div>
+      <div class="research-card">
+        <span class="rline">Linie C</span>
+        <h4>Technologiebasierte Gründungen aus Hochschule und Region Ingolstadt</h4>
+        <ul>
+          <li>Welche Governance-Architekturen (Beirat, Cap Table, Optionsprogramme, IP) begünstigen Spin-off-Erfolg in der Pre-Seed-Phase?</li>
+          <li>Welche Rolle spielen Mittelständler als Ankerkunden, Mentoren und Corporate Venturers für Gründungen aus der THI?</li>
+          <li>Design: Längsschnitt der im Startup Center betreuten Gründungen über fünf Jahre. Partner: Startup Center, brigk, ACE²-EU</li>
+          <li>Entrepreneurship Education: 113 Wochenreflexionen von 20 Teilnehmenden aus dem VentureLab als Datensatz; Aufsatz mit Helmut Wittenzeller in Arbeit, Ziel Simulation &amp; Gaming</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="margin-top:2rem; margin-bottom:0.75rem;">Zielzeitschriften</h3>
+    <div class="journal-pills">
+      <span class="j-pill">Entrepreneurship Theory &amp; Practice</span>
+      <span class="j-pill">Small Business Economics</span>
+      <span class="j-pill">Journal of Technology Transfer</span>
+      <span class="j-pill">Technovation</span>
+      <span class="j-pill">Entrepreneurship &amp; Regional Development</span>
+      <span class="j-pill">Journal of Family Business Strategy</span>
+      <span class="j-pill">Family Business Review</span>
+      <span class="j-pill">ZfKE</span>
+    </div>
+    <div style="margin-top:2rem; background:var(--white); padding:1.5rem; border-radius:6px; box-shadow:0 1px 5px rgba(0,0,0,0.07);">
+      <h3>Drittmittel und Transfer</h3>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">
+        Ziel: <strong>kumuliert mindestens 600.000 EUR in den ersten fünf Jahren</strong>, überwiegend in Verbünden mit Kolleginnen und Kollegen der Fakultät und regionalen Partnern.
+        Gestaffelt: <strong>ZIM</strong>, <strong>Bayerische Forschungsstiftung</strong>, <strong>Stiftung Familienunternehmen und EQUA</strong>, dann <strong>EXIST</strong> mit dem Startup Center und Förderlinien von BMWE und StMWK,
+        danach <strong>DFG-Sachbeihilfe</strong> und ein europäisches Konsortium über <strong>ACE²-EU</strong>.
+      </p>
+      <p style="font-size:0.9rem; margin-top:0.75rem;">
+        Offen gesagt: Drittmittel als Principal Investigator habe ich bislang nicht eingeworben, und meine Publikationen liegen in der Familienunternehmens- und Managementforschung, mit Anschluss an Small Business Economics und ZfKE, nicht im Journal of Business Venturing.
+        Der Fahrplan beginnt deshalb mit dem, was ich mitbringe: Feldzugang zu rund 150 Unternehmen und einem Angel-Netzwerk, Antragserfahrung aus ZIM, BAFA, KfW und Horizon Europe, Mitwirkung an den Förderanträgen Konti-AI (BMWE, IPCEI KI) und bei der Fritz Thyssen Stiftung an der Universität Siegen, und Koautorinnen und Koautoren in Reading, Bozen, Siegen und Bloomington.
+      </p>
+      <p style="font-size:0.9rem; margin-top:0.75rem;">
+        Drei Transferformate: ein Praxisbeirat aus Business Angels, Gründern und Geschäftsführern der Region, ein jährliches Forum „Corporate Venturing und Nachfolge im Mittelstand“ mit IHK und Wirtschaftsförderung, ein berufsbegleitendes Zertifikat zu Venture Finance und Corporate Venturing.
+      </p>
+    </div>
+  </div>
+</section>
+<section id="publikationen">
+  <div class="container">
+    <h2 class="section-title">Publikationen</h2>
+    <div class="section-bar"></div>
+    <p style="font-size:0.88rem; color:#666; margin-bottom:1.5rem;">Auswahl. ORCID: <a href="https://orcid.org/0000-0001-6484-1421" target="_blank" style="color:var(--teal);">0000-0001-6484-1421</a></p>
+    <div class="pub-list">
+      <div class="pub-item">
+        <span class="pub-status published">Erschienen, Open Access</span>
+        <p class="pub-ref">Neusser, C. (2025). Ecological succession as a model for family business transitions: Integrating organizational ecology with succession-based governance in multigenerational enterprises. <em>Journal of Family Business Strategy.</em> https://doi.org/10.1016/j.jfbs.2025.100698</p>
+      </div>
+      <div class="pub-item">
+        <span class="pub-status published">Monographie</span>
+        <p class="pub-ref">Neusser, C. (2018). <em>Critical Success Factors in the Transition of German Family-owned Manufacturing SME Companies to External Management.</em> Verlag Dr. Kovač.</p>
+      </div>
+      <div class="pub-item">
+        <span class="pub-status published">Peer-Reviewed</span>
+        <p class="pub-ref">Brem, A., Kreusel, N., &amp; Neusser, C. (2008). Performance measurement in SMEs: Literature review and results from a German case study. <em>International Journal of Globalisation and Small Business, 2</em>(4), 411 bis 427.</p>
+      </div>
+      <div class="pub-item forthcoming">
+        <span class="pub-status forthcoming">Im Erscheinen, Edward Elgar</span>
+        <p class="pub-ref">Neusser, C., &amp; Belitski, M. (2026). Ecological Models in Family Business Succession: A Framework for Sustainable Innovation and Resilience. In T. Clauss, A. Calabrò, &amp; A. Heider (Eds.), <em>Elgar Companion to Family Business and the UN Sustainable Development Goals.</em></p>
+      </div>
+      <div class="pub-item forthcoming">
+        <span class="pub-status forthcoming">Im Erscheinen, ZfKE</span>
+        <p class="pub-ref">Neusser, C., &amp; Weller, M. (2026). Reframing Innovation: How Female Successors Redefine Risk, Time, and Impact in Family SMEs. <em>Zeitschrift für KMU und Entrepreneurship.</em></p>
+      </div>
+      <div class="pub-item forthcoming">
+        <span class="pub-status forthcoming">Im Erscheinen</span>
+        <p class="pub-ref">Neusser, C., Vershinina, N., Mismetti, M., &amp; De Massis, A. (2026). Innovation Pathways in Family Firms: Governance, Succession, and Crisis Adaptation. <em>Small Business Economics.</em></p>
+      </div>
+      <div class="pub-item review">
+        <span class="pub-status review">Im Review</span>
+        <p class="pub-ref">Neusser, C., &amp; Belitski, M. (2026). From Outsider to Insider: How Digital Footprints Shape Legitimacy in Externally Led Succession of Family Firms. <em>Journal of Family Business Strategy.</em></p>
+      </div>
+      <div class="pub-item review">
+        <span class="pub-status review">Im Review</span>
+        <p class="pub-ref">Neusser, C., &amp; Belitski, M. (2026). Navigating Family Business Succession: Balancing Tradition and Change. <em>Family Business Review.</em></p>
+      </div>
+      <div class="pub-item review">
+        <span class="pub-status review">Im Review</span>
+        <p class="pub-ref">Neusser, C. (2026). Inward Theorizing Ecological Resilience and Evolutionary Dynamics in Family Business Succession. <em>Journal of Family Business Strategy.</em></p>
+      </div>
+    </div>
+    <p style="font-size:0.85rem; color:#777; margin-top:0.5rem; font-style:italic;">Dazu neun Working Papers mit Zielzeitschriften von Entrepreneurship Theory and Practice über das Journal of Management Studies bis Strategic Organization. Vollständige Liste auf Anfrage.</p>
+  </div>
+</section>
+<section id="dissertation">
+  <div class="container">
+    <h2 class="section-title">Dissertation und MSTM-Framework</h2>
+    <div class="section-bar"></div>
+    <p style="margin-bottom:1.5rem;">
+      <strong>Neusser, C. (2026).</strong> <em>Mechanisms, Structure, Trust and Mandate: A Grounded Theory of External Succession Governance in German Family Manufacturing SMEs.</em>
+      DBA Dissertation, Henley Business School, University of Reading. <strong>Straight Pass</strong>, verliehen am 9. Januar 2026. DOI 10.48683/1926.00129787.
+    </p>
+    <div class="diss-grid">
+      <div>
+        <h3>Design und Methode</h3>
+        <p style="font-size:0.92rem; margin:0.75rem 0;">Gioia-Methodik, qualitative Inhaltsanalyse. Empirie: <strong>102 Interviews</strong> in <strong>42 Unternehmen</strong>, davon 8 Fokusfallstudien und 34 Validierungsfälle. Vollständige ethische Freigabe der University of Reading.</p>
+        <h3 style="margin-top:1.5rem;">Fünf Phasen des Führungsübergangs</h3>
+        <div class="phase-flow">
+          <div class="phase-item"><span class="phase-num">Phase 1</span><span class="phase-name">Trigger</span><span class="phase-desc">Auslöser</span></div>
+          <div class="phase-item"><span class="phase-num">Phase 2</span><span class="phase-name">Selektion</span><span class="phase-desc">Auswahl und Mandat</span></div>
+          <div class="phase-item"><span class="phase-num">Phase 3</span><span class="phase-name">Onboarding</span><span class="phase-desc">Rollenklärung</span></div>
+          <div class="phase-item"><span class="phase-num">Phase 4</span><span class="phase-name">Legitimation</span><span class="phase-desc">Autorität aufbauen</span></div>
+          <div class="phase-item phase-end"><span class="phase-num">Phase 5</span><span class="phase-name">Renewal oder Exit</span><span class="phase-desc">Fortführung oder Übergabe</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="framework-box">
+          <div class="fw-title">MSTM</div>
+          <div class="fw-sub">Neusser (2026), Mechanisms, Structure, Trust, Mandate</div>
+          <div class="mstm-grid">
+            <div class="mstm-cell"><span class="letter">M</span><span class="word">Mechanisms</span></div>
+            <div class="mstm-cell"><span class="letter">S</span><span class="word">Structure</span></div>
+            <div class="mstm-cell"><span class="letter">T</span><span class="word">Trust</span></div>
+            <div class="mstm-cell"><span class="letter">M</span><span class="word">Mandate</span></div>
+          </div>
+        </div>
+        <div class="diss-stats" style="margin-top:1.5rem;">
+          <div class="stat-box"><span class="num">102</span><span class="lbl">Interviews</span></div>
+          <div class="stat-box"><span class="num">42</span><span class="lbl">Unternehmen</span></div>
+          <div class="stat-box"><span class="num">8</span><span class="lbl">Fokusfälle</span></div>
+          <div class="stat-box"><span class="num">34</span><span class="lbl">Validierungsfälle</span></div>
+          <div class="stat-box"><span class="num">16</span><span class="lbl">Archetypen</span></div>
+          <div class="stat-box"><span class="num">4</span><span class="lbl">Erfolgscluster</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:2.5rem;">Sechzehn Akteur-Archetypen in vier Rollengruppen</h3>
+<p style="font-size:0.9rem; margin:0.5rem 0 1rem;">Induktiv aus den 102 Interviews abgeleitet (Thesis, Kapitel 4.7.3, Tabelle 27 und Tabelle 33). Archetypen sind Rollenmuster, keine Persönlichkeitstypen: dieselbe Person kann im Verlauf der Nachfolge die Position wechseln. Die zweite Zeile je Karte nennt die Signatur des Archetyps entlang der vier MSTM-Dimensionen Mechanismen, Struktur, Vertrauen und Mandat.</p>
+<h4 style="color:var(--navy); margin:1.25rem 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em; font-size:0.85rem;">Vorgänger</h4>
+<div class="teach-grid">
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Architect</h4><p style="margin-bottom:0.5rem;">Gestaltet die Nachfolge aktiv, begleitet als Mentor und ermöglicht Autonomie; zieht sich geplant zurück.</p><p style="font-size:0.8rem; color:#777;">Onboarding-Rituale und Coaching; Governance auf den Nachfolgeplan ausgerichtet; Vertrauen durch Mentoring; symbolische Übergabe des Mandats.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Ghost</h4><p style="margin-bottom:0.5rem;">Tritt formal ab, behält aber informelle Kontrolle über Nebenkanäle.</p><p style="font-size:0.8rem; color:#777;">Unterläuft formale Mechanismen; vermeidet echten Rückzug; erzeugt Mehrdeutigkeit; blockiert das Mandat durch fortdauernden Einfluss.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Gatekeeper</h4><p style="margin-bottom:0.5rem;">Filtert Optionen und Informationen, schützt die Kultur, bremst Veränderung.</p><p style="font-size:0.8rem; color:#777;">Kontrolliert den Zugang des Nachfolgers; selektive Strukturen; Vertrauen an kulturelle Loyalität gebunden; verzögert oder zersplittert das Mandat.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Refugee</h4><p style="margin-bottom:0.5rem;">Zieht sich abrupt zurück und hinterlässt ein Führungsvakuum.</p><p style="font-size:0.8rem; color:#777;">Fehlt beim Aufbau von Mechanismen; verlässt Strukturen plötzlich; relationale Leere; Mandat bleibt unklar.</p></div>
+</div>
+<h4 style="color:var(--navy); margin:1.25rem 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em; font-size:0.85rem;">Nachfolger</h4>
+<div class="teach-grid">
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Integrator</h4><p style="margin-bottom:0.5rem;">Balanciert Erbe und Wandel, baut Vertrauen schrittweise auf.</p><p style="font-size:0.8rem; color:#777;">Weiche Mechanismen wie Dialog und Feedback; respektiert bestehende Strukturen; Vertrauen wächst inkrementell; Mandat durch Resonanz und Ergebnisse.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Challenger</h4><p style="margin-bottom:0.5rem;">Treibt Transformation, bricht mit Traditionen.</p><p style="font-size:0.8rem; color:#777;">Disruptive Werkzeuge wie Dashboards und KPIs; drängt auf Strukturumbau; frühes Vertrauen schwierig; Mandat bedingt oder umkämpft.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Guardian</h4><p style="margin-bottom:0.5rem;">Sichert Stabilität, gewinnt Vertrauen über Kompetenz.</p><p style="font-size:0.8rem; color:#777;">Pflegt bestehende Systeme; respektiert die Legacy-Struktur; Vertrauen durch Kontinuität; passives oder ererbtes Mandat.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Misfit</h4><p style="margin-bottom:0.5rem;">Scheitert an der kulturellen oder symbolischen Integration.</p><p style="font-size:0.8rem; color:#777;">Mechanismen ohne Anpassung; missversteht Strukturen; kein Vertrauensaufbau; Mandat trotz formaler Rolle nicht anerkannt.</p></div>
+</div>
+<h4 style="color:var(--navy); margin:1.25rem 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em; font-size:0.85rem;">Inhaberfamilie</h4>
+<div class="teach-grid">
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Anchor</h4><p style="margin-bottom:0.5rem;">Stabilisiert die Nachfolge und ermöglicht das Onboarding.</p><p style="font-size:0.8rem; color:#777;">Stützt nachfolgerbezogene Prozesse; stärkt die Familien-Governance; wirkt als relationaler Stabilisator; symbolischer Mandatsgeber.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Phantom Owner</h4><p style="margin-bottom:0.5rem;">Operativ fern, emotional gebunden, blockiert sporadisch.</p><p style="font-size:0.8rem; color:#777;">Fehlt in Mechanismen, greift unvorhersehbar ein; untergräbt Vertrauen durch Unberechenbarkeit; schwächt das Mandat indirekt.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Internal Competitor</h4><p style="margin-bottom:0.5rem;">Konkurriert mit dem Nachfolger, widersetzt sich externer Führung.</p><p style="font-size:0.8rem; color:#777;">Blockiert Mechanismen aktiv; ignoriert Governance; erzeugt internes Misstrauen; versucht, das Mandat zu delegitimieren.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Narrator</h4><p style="margin-bottom:0.5rem;">Prägt die Erzählung und Wahrnehmung der Nachfolge.</p><p style="font-size:0.8rem; color:#777;">Schafft Storytelling-Mechanismen; deutet Strukturen narrativ um; baut oder bricht Vertrauen durch Rahmung; stärkt oder schwächt das Mandat symbolisch.</p></div>
+</div>
+<h4 style="color:var(--navy); margin:1.25rem 0 0.5rem; text-transform:uppercase; letter-spacing:0.05em; font-size:0.85rem;">Berater und Beirat</h4>
+<div class="teach-grid">
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Process Architect</h4><p style="margin-bottom:0.5rem;">Entwirft und strukturiert die Prozessarchitektur.</p><p style="font-size:0.8rem; color:#777;">Prozessinfrastruktur für Suche und Onboarding; verankert Nachfolge in Governance-Routinen; Vertrauen durch Kompetenz und Klarheit; legitime Mandatsbildung.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Mediator</h4><p style="margin-bottom:0.5rem;">Moderiert Spannungen und ermöglicht Vertrauen.</p><p style="font-size:0.8rem; color:#777;">Räume für Emotion und Dialog; navigiert strukturelle Spannungen; repariert Vertrauen durch Vermittlung; stützt symbolische Legitimation.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Executor</h4><p style="margin-bottom:0.5rem;">Setzt Veränderung ohne kulturelle Passung durch.</p><p style="font-size:0.8rem; color:#777;">Werkzeuge ohne Kontextanpassung; beschleunigt Strukturwandel; riskiert Vertrauensverlust; umgeht die Mandatsanerkennung.</p></div>
+  <div class="teach-card" style="padding:1.1rem;"><h4 style="margin-bottom:0.35rem;">Symbolic Endorser</h4><p style="margin-bottom:0.5rem;">Verleiht Glaubwürdigkeit durch persönliches Gewicht.</p><p style="font-size:0.8rem; color:#777;">Validiert Mechanismen mit eigener Reputation; wirkt außerhalb formaler Strukturen; Vertrauen durch Sozialkapital; symbolischer Mandatsgeber.</p></div>
+</div>
+    <div class="relevance-box">
+      <h4>Relevanz für Entrepreneurship</h4>
+      <p>MSTM beschreibt Führung nicht als Eigenschaft einer Person, sondern als Konfiguration aus formalen Mechanismen, institutioneller Struktur, Vertrauen und tatsächlichem Mandat. Eine Ausgründung, ein Management-Buy-in oder eine Beteiligung sind Übergänge in genau diesem Sinn: Jemand bekommt ein Mandat, das er zuvor nicht hatte, Ressourcen werden unter Unsicherheit gebunden, Vertrauen muss verdient werden. Für die Lehre liefert MSTM ein Analyseraster, mit dem Studierende beurteilen können, ob ein Venture tragfähig aufgesetzt ist, jenseits des Businessplans. Für die Forschung liefert es die Brücke zwischen Nachfolge- und Entrepreneurship-Literatur in einem Feld, das in beiden unterbesetzt ist: dem eigentümergeführten, technikgeprägten Mittelstand.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="konferenzen">
+  <div class="container">
+    <h2 class="section-title">Konferenzen und wissenschaftliche Foren 2020 bis 2027</h2>
+    <div class="section-bar"></div>
+    <p style="margin-bottom:1rem;">Vollständige Liste aus dem Konferenzarchiv, chronologisch. Genannt sind Beitrag und Rolle; Orte nur dort, wo sie aus den Unterlagen hervorgehen.</p>
+    <div style="overflow-x:auto;">
+    <table class="criteria-table"><thead><tr><th>Jahr</th><th>Konferenz, Ort</th><th>Beitrag</th><th>Rolle, Ergebnis</th></tr></thead><tbody>
+<tr><td>2020</td><td>Doctoral Research Conference, University of Reading, Reading (online)</td><td>Poster: From Family Ownership to Corporatisation</td><td>Posterpräsentation</td></tr>
+<tr><td>2020</td><td>Creative Spark Berlin, Berlin</td><td>Succession from Ownership to Corporatisation: Opportunity or Necessity</td><td>Vortrag</td></tr>
+<tr><td>2023</td><td>ICD Research Forum, Paris</td><td>Plant Succession vs. Family Business Succession and Innovation</td><td>Vortrag</td></tr>
+<tr><td>2023</td><td>FiFu Forschungskolloquium Familienunternehmen, Hamburg</td><td>Plant Succession vs. Family Business Succession and Innovation</td><td>Vortrag</td></tr>
+<tr><td>2023</td><td>WiFu Forschungskolloquium, Universität Witten/Herdecke, Witten</td><td>Literature Review: Succession from Ownership to Corporatisation</td><td>Vortrag</td></tr>
+<tr><td>2023</td><td>EDAMBA Summer Academy</td><td>Research Design External Succession</td><td>Bewerbung und Teilnahme</td></tr>
+<tr><td>2024</td><td>SPGC Symposium</td><td>SLR Succession to External Management</td><td>Paper-Präsentation</td></tr>
+<tr><td>2024</td><td>EURAM Annual Conference, Bath</td><td>Plant Succession Paper</td><td>Paper-Präsentation, drei Reviews</td></tr>
+<tr><td>2024</td><td>EMS Conference</td><td>Plant Succession Paper</td><td>Paper-Präsentation</td></tr>
+<tr><td>2024</td><td>Doctoral Research Conference, University of Reading, Reading</td><td>Poster: Navigating New Horizons</td><td>Posterpräsentation</td></tr>
+<tr><td>2024</td><td>EIASM Workshop, Barcelona</td><td>Transitioning from Family to External Management: A Comprehensive Theoretical Model</td><td>Paper-Präsentation</td></tr>
+<tr><td>2024</td><td>IFBRF International Family Business Research Forum</td><td>Facilitating Effective Succession in Family Businesses (SLR)</td><td>Paper-Präsentation, zwei Reviews</td></tr>
+<tr><td>2024</td><td>RENT Conference und Doctoral Workshop</td><td>Facilitating Effective Succession in Family Businesses</td><td>Paper-Präsentation und Doctoral Workshop</td></tr>
+<tr><td>2024</td><td>HBS Doctoral Conference, Henley Business School, Henley</td><td>Navigating External Succession</td><td>Vortrag</td></tr>
+<tr><td>2024</td><td>Elgar Companion Family Business and SDGs</td><td>Chapter Proposal: Ecological Models in Family Business Succession</td><td>Kapitelvorschlag angenommen</td></tr>
+<tr><td>2025</td><td>IERC International Entrepreneurship Research Conference, Jeddah</td><td>Navigating New Horizons; Doctoral Colloquium</td><td>Vortrag, Doctoral Colloquium, Podcast-Interview</td></tr>
+<tr><td>2025</td><td>3E Conference (ECSB Entrepreneurship Education), München</td><td>Balancing Tradition and Innovation; Towards the Succession Theory of a Firm</td><td>Zwei Beiträge</td></tr>
+<tr><td>2025</td><td>FiFu Forschungskolloquium Familienunternehmen, Salzburg</td><td>Towards the Succession Theory of a Firm</td><td>Vortrag</td></tr>
+<tr><td>2025</td><td>WiFu Forschungskolloquium, Universität Witten/Herdecke, Witten</td><td>Navigating External Succession</td><td>Vortrag</td></tr>
+<tr><td>2025</td><td>FERC Family Enterprise Research Conference, Doctoral Colloquium, Dublin</td><td>Navigating Family Business Succession</td><td>Doctoral Colloquium</td></tr>
+<tr><td>2025</td><td>SPGC Symposium, Monterrey</td><td>Navigating Family Business Succession: Balancing Tradition and Change</td><td>Paper-Präsentation</td></tr>
+<tr><td>2025</td><td>IFERA Annual Conference, Zadar</td><td>Navigating Family Business Succession: Balancing Tradition and Change</td><td>Paper-Präsentation, Best Paper Contribution to Practice (nominiert)</td></tr>
+<tr><td>2025</td><td>EURAM Annual Conference, Florenz</td><td>Navigating the Waters of Change</td><td>Paper-Präsentation, Best Paper nominiert</td></tr>
+<tr><td>2025</td><td>Academy of Management Annual Meeting, Kopenhagen</td><td>Navigating Family Business Succession; SLR</td><td>Paper-Präsentation, Reviewer</td></tr>
+<tr><td>2025</td><td>APFB Asia-Pacific Family Business Symposium</td><td>Navigating Family Business Succession</td><td>Paper-Präsentation</td></tr>
+<tr><td>2025</td><td>IECER Interdisciplinary European Conference on Entrepreneurship Research</td><td>Navigating Family Business Succession</td><td>Extended Abstract</td></tr>
+<tr><td>2025</td><td>IFBRF International Family Business Research Forum</td><td>External Succession in German Family Firms</td><td>Beitrag</td></tr>
+<tr><td>2025</td><td>Doctoral Research Conference, University of Reading, Reading</td><td>The External Manager’s Dilemma: Saviours or Scapegoats; Three Minute Thesis</td><td>Vortrag und 3MT</td></tr>
+<tr><td>2025</td><td>RENT Conference, Eindhoven</td><td>From Outsider to Insider: How Digital Footprints Shape Legitimacy</td><td>Paper-Präsentation</td></tr>
+<tr><td>2025</td><td>Henley DBA Mock Viva und Colloquium, Henley</td><td>Navigating External Succession</td><td>Kolloquium</td></tr>
+<tr><td>2026</td><td>ACERE Australian Centre for Entrepreneurship Research Exchange, Sydney</td><td>From Succession to Regeneration; Doctoral Consortium</td><td>Paper-Präsentation und Doctoral Consortium</td></tr>
+<tr><td>2026</td><td>ECSB goes online, online</td><td>From Succession to Regeneration</td><td>Vortrag</td></tr>
+<tr><td>2026</td><td>Creative Spark</td><td>From Succession to Regeneration under Permanent Adversity</td><td>Drei-Minuten-Pitch</td></tr>
+<tr><td>2026</td><td>Henley Business School, Guest Lecture und Colloquium, Henley</td><td>External Succession and the MSTM Framework</td><td>Gastvorlesung</td></tr>
+<tr><td>2026</td><td>FiFu Forschungskolloquium Familienunternehmen</td><td>From Outsider to Insider; From Succession to Regeneration</td><td>Zwei Vorträge, Session Chair</td></tr>
+<tr><td>2026</td><td>DTS Doctoral and Transfer Symposium</td><td>Mandated Authenticity</td><td>Vortrag</td></tr>
+<tr><td>2026</td><td>EECC Entrepreneurship Education Conference</td><td>Peer Reviews</td><td>Reviewer</td></tr>
+<tr><td>2026</td><td>SPGC und FERC Joint Conference</td><td>From Outsider to Insider</td><td>Paper-Präsentation, PDW Roundtable</td></tr>
+<tr><td>2026</td><td>IFERA Annual Conference</td><td>From Succession to Regeneration; Reframing Innovation (mit Weller und Wrobel)</td><td>Zwei Paper-Präsentationen</td></tr>
+<tr><td>2026</td><td>EURAM Annual Conference</td><td>Track „Succession Beyond Kinship and Entrepreneurial Behaviour“</td><td>Co-Organiser und Track Chair</td></tr>
+<tr><td>2026</td><td>NCSB Nordic Conference on Small Business Research</td><td>Track „Succession Beyond Kinship“; Crown as Brand, Family as Symbol</td><td>Co-Organiser, Paper-Präsentation</td></tr>
+<tr><td>2026</td><td>Mobility in a Globalised World</td><td>Business Model Innovation under Transition</td><td>Vortrag</td></tr>
+<tr><td>2026</td><td>Workshop on Family Firm Management Research, Hasselt</td><td>The MSTM Framework (WIP Paper)</td><td>Abstract angenommen</td></tr>
+<tr><td>2026</td><td>Academy of Management Annual Meeting</td><td>From Succession to Regeneration</td><td>Einreichung</td></tr>
+<tr><td>2027</td><td>EURAM Annual Conference</td><td>Topic Proposals „Succession Beyond Kinship“ und „Rising Above“</td><td>Track-Vorschläge eingereicht (geplant)</td></tr>
+    </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section id="papers">
+  <div class="container">
+    <h2 class="section-title">Papers in Arbeit</h2>
+    <div class="section-bar"></div>
+    <p style="margin-bottom:0.5rem;">Alle laufenden Manuskripte mit Status, Stand September 2026. Erschienene und angenommene Arbeiten stehen unter Publikationen. Status und Zielzeitschriften ändern sich; die jeweils aktuelle Fassung führe ich in einer Übersicht nach.</p>
+    <div style="overflow-x:auto;">
+<h3 style="margin-top:1.5rem;">Eingereicht oder im Verfahren</h3>
+<table class="criteria-table"><thead><tr><th>Titel</th><th>Koautorinnen und Koautoren</th><th>Status</th><th>Ziel bzw. Venue</th><th>Stand</th></tr></thead><tbody>
+<tr><td>Navigating Family Business Succession: Balancing Tradition and Change</td><td>mit M. Belitski</td><td>Revise and Resubmit, eingeladene Wiedereinreichung</td><td>Family Business Review</td><td>Frist 10/2026</td></tr>
+<tr><td>Reframing Innovation: How Female Successors Redefine Risk, Time, and Impact in Family SMEs (erweiterte Fassung nach Best Paper Award)</td><td>mit M. Weller, S. Wrobel</td><td>Erweiterung mit zwei zusätzlichen Fällen in Arbeit</td><td>Journal of Family Business Strategy</td><td>2026</td></tr>
+<tr><td>From Outsider to Insider: How Digital Footprints Shape Legitimacy in Externally Led Succession</td><td>mit M. Belitski</td><td>Eingereicht</td><td>Journal of Family Business Strategy</td><td>2026</td></tr>
+<tr><td>Finding What Was Lost? Former Family Business Owners as Angel Investors</td><td>mit Christoph Boeckhaus (Hauptautor)</td><td>Major Revision, Antwort eingereicht</td><td>ZfKE</td><td>07/2026</td></tr>
+<tr><td>Transitioning from Family to External Management: Developing a Comprehensive Theoretical Model</td><td>Einzelautor</td><td>Eingereicht, Entscheidung offen</td><td>Management Decision</td><td>09/2024</td></tr>
+<tr><td>Family SMEs in the Mirror: Definitions of the Family Firm</td><td>mit P. Roffia, A. Zardini</td><td>Manuskript in Abstimmung</td><td>International Journal of Entrepreneurial Behavior &amp; Research</td><td>2026</td></tr>
+</tbody></table>
+<h3 style="margin-top:1.5rem;">Manuskript fertig oder in Ausarbeitung</h3>
+<table class="criteria-table"><thead><tr><th>Titel</th><th>Koautorinnen und Koautoren</th><th>Status</th><th>Ziel bzw. Venue</th><th>Stand</th></tr></thead><tbody>
+<tr><td>VentureLab: Das 5-Euro-Business als Realexperiment in der Lehre für Wirtschaftsingenieure (Arbeitstitel)</td><td>mit H. Wittenzeller</td><td>In Ausarbeitung: 113 Wochenreflexionen von 20 Teilnehmenden (DHBW SoSe 2026), NVivo-Kodierung 10 bis 11/2026, Manuskript 12/2026</td><td>Simulation &amp; Gaming; Alternativen Journal of Experiential Education, Entrepreneurship Education and Pedagogy, ZfKE</td><td>Einreichung 02/2027 geplant</td></tr>
+<tr><td>Mandated Authenticity: Governing Generative AI in Customer-Facing Marketing of Owner-Managed Firms</td><td>mit Hanna Schramm-Klein (Universität Siegen)</td><td>Manuskript v1.0, 12.600 Wörter</td><td>Technological Forecasting and Social Change (SI Family Business 4.0) oder Journal of Business Ethics</td><td>06/2026</td></tr>
+<tr><td>Emotional Avoidance Mechanisms in Pre-Succession Planning</td><td>mit M. Belitski</td><td>Manuskript v2, JFBS-formatiert</td><td>Journal of Family Business Strategy</td><td>05/2026</td></tr>
+<tr><td>The MSTM Framework: A Multilevel, Recursive Theory of External Succession</td><td>Einzelautor</td><td>WIP Paper</td><td>Workshop Hasselt 2026, danach FBR oder ETP</td><td>2026</td></tr>
+<tr><td>Four Pathways of External Succession: A Configurational Typology (Cluster Typology)</td><td>Einzelautor</td><td>Extended Abstract, Full Paper in Arbeit</td><td>RENT 2026, danach SEJ oder JFBS</td><td>10/2026</td></tr>
+<tr><td>From Succession to Regeneration: Embedding External Leadership Transitions in Entrepreneurial Ecosystems</td><td>mit M. Belitski</td><td>Konferenzpaper (ACERE, AOM, SPGC)</td><td>Entrepreneurship Theory &amp; Practice oder Journal of Business Venturing</td><td>2026</td></tr>
+<tr><td>From Succession to Regeneration under Permanent Adversity</td><td>Einzelautor</td><td>Extended Abstract</td><td>offen</td><td>01/2026</td></tr>
+<tr><td>Crown as Brand, Family as Symbol: Symbolic Leadership in Family Firms</td><td>mit E. Kalhor, J. K. Sommer, I. Laur</td><td>Draft, NCSB und APFB 2026</td><td>British Journal of Management</td><td>2026</td></tr>
+<tr><td>Plants or Plants? Using Plant Succession to Develop Family Firm Succession Theory</td><td>mit M. Belitski, D. Audretsch</td><td>Manuskript fertig, Differenzierung zum JFBS-Aufsatz offen</td><td>Strategic Organization</td><td>2024/2026</td></tr>
+<tr><td>Towards the Succession Theory of the Firm: Inbound and Outbound Theorising</td><td>mit M. Belitski</td><td>Volltext, nicht eingereicht</td><td>offen</td><td>2025</td></tr>
+<tr><td>Bridging Theory and Practice: Empirical Insights from In-depth Interviews on External Management Transitions</td><td>Einzelautor</td><td>Proposal</td><td>JSBE</td><td>11/2024</td></tr>
+<tr><td>Networks, Governance and Innovation: How Female Successors Mobilise External Ties</td><td>Einzelautor</td><td>Extended Abstracts (AOM, NCSB)</td><td>offen, Kandidat für ZfKE</td><td>2026</td></tr>
+<tr><td>Many Roads to Performance: A QCA Study on Family Firm Panel Data</td><td>Einzelautor</td><td>Datenpaket und Proposal</td><td>Journal of Family Business Strategy</td><td>2026</td></tr>
+<tr><td>Doing the Business Family</td><td>mit T. Koellner, G. Palaiologos</td><td>Manuskript liegt vor</td><td>Entrepreneurship &amp; Regional Development</td><td>2026</td></tr>
+<tr><td>Business Model Innovation under Transition</td><td>Einzelautor</td><td>Konferenzbeitrag</td><td>Mobility in a Globalised World 2026</td><td>2026</td></tr>
+<tr><td>Externe Nachfolge in industriellen Familienunternehmen (Policy Brief, DE und EN)</td><td>Einzelautor</td><td>Policy Brief</td><td>IfM Bonn Reihe</td><td>2026</td></tr>
+</tbody></table>
+<h3 style="margin-top:1.5rem;">Konzeptphase</h3>
+<table class="criteria-table"><thead><tr><th>Titel</th><th>Koautorinnen und Koautoren</th><th>Status</th><th>Ziel bzw. Venue</th><th>Stand</th></tr></thead><tbody>
+<tr><td>Navigating Leadership Transitions in Family Businesses: Adaptive Governance, Communication, Leadership Development and Innovation Balance</td><td>Einzelautor</td><td>Fragebogen entwickelt, Feldphase offen</td><td>quantitative Studie</td><td>2025</td></tr>
+<tr><td>Succession Readiness Index</td><td>mit A. De Massis</td><td>Konzept</td><td>Entrepreneurship Theory &amp; Practice</td><td>2026</td></tr>
+<tr><td>Organisational Memory and Strategic Renewal in Family Firms</td><td>mit O. Khlystova</td><td>Konzept</td><td>Journal of Management Studies</td><td>2026</td></tr>
+<tr><td>Inheriting Legacies Across Nations: Family Business Succession in Germany and the UK</td><td>mit M. Singh</td><td>Konzept</td><td>Journal of Family Business Management</td><td>2026</td></tr>
+<tr><td>Emotional Well-Being in Family Businesses</td><td>mit P. Moog</td><td>Konzept (Workshop-Call Excelia)</td><td>Journal of Family Business Strategy</td><td>2025</td></tr>
+</tbody></table>
+    </div>
+  </div>
+</section>
+
+<section id="quellen">
+  <div class="container">
+    <h2 class="section-title">Quellen und Transparenz</h2>
+    <div class="section-bar"></div>
+    <div class="relevance-box" style="margin:0 0 1.5rem;">
+      <h4>Hinweis zum Einsatz von KI</h4>
+      <p>Diese Bewerbungsseite habe ich mit Unterstützung von Claude (Anthropic) erstellt. Die KI hat den Seitenaufbau und den Code erzeugt, Formulierungen korrigiert und an einzelnen Stellen geschärft sowie das Modulhandbuch und die Studiengangsseiten der Fakultät Wirtschaftsingenieurwesen ausgewertet. Alle Fakten, Zahlen, Bewertungen und Positionen stammen von mir und wurden von mir geprüft; die Verantwortung für den Inhalt liegt bei mir. Ich lege das offen, weil ich den Umgang mit generativer KI in der Lehre zum Lernziel mache und denselben Maßstab an mich selbst anlege.</p>
+    </div>
+    <h3>Quellenverzeichnis</h3>
+    <ol style="font-size:0.88rem; color:#444; padding-left:1.2rem; margin-top:0.5rem;">
+<li style="margin-bottom:0.5rem;">Neusser, C. (2026). Navigating external succession in German Mittelstand family-owned manufacturing companies: A multi-perspective study on leadership transition, governance, and socioemotional wealth. DBA thesis, Henley Business School, University of Reading. DOI 10.48683/1926.00129787. Kapitel 4.7.3 (Actor Archetypes, Tabelle 27), Tabelle 33 (Aktivierung der MSTM-Dimensionen je Archetyp), Abbildung 2 (Heatmap Archetypen je Cluster).</li>
+<li style="margin-bottom:0.5rem;">Neusser, C. (2025). Ecological succession as a model for family business transitions. Journal of Family Business Strategy. DOI 10.1016/j.jfbs.2025.100698.</li>
+<li style="margin-bottom:0.5rem;">Neusser, C. (2018). Critical Success Factors in the Transition of German Family-owned Manufacturing SME Companies to External Management. Hamburg: Verlag Dr. Kovač.</li>
+<li style="margin-bottom:0.5rem;">Brem, A., Kreusel, N., &amp; Neusser, C. (2008). Performance measurement in SMEs. International Journal of Globalisation and Small Business, 2(4), 411 bis 427.</li>
+<li style="margin-bottom:0.5rem;">Technische Hochschule Ingolstadt (2026). Stellenausschreibung Professur (m/w/d) Entrepreneurship, Fakultät Wirtschaftsingenieurwesen, Kennziffer 2016, Online-Bewerbungsportal, Frist 14.09.2026.</li>
+<li style="margin-bottom:0.5rem;">Technische Hochschule Ingolstadt (2025). Modulhandbuch Wirtschaftsingenieurwesen Master of Engineering (M. Eng.), Wintersemester 2025/26. thi.de/fileadmin/daten/fakultaetWI/Modulhandbuch/Master_WI/MHB_M_WI_WS_2025_26.pdf</li>
+<li style="margin-bottom:0.5rem;">Technische Hochschule Ingolstadt (2026). Fakultät Wirtschaftsingenieurwesen: Studiengänge, Kompetenzfeld Entrepreneurship und Innovationsmanagement, Team und Dekanat. thi.de/fakultaet-wirtschaftsingenieurwesen/</li>
+<li style="margin-bottom:0.5rem;">Technische Hochschule Ingolstadt (2026). THI Startup Center (Center of Entrepreneurship). thi.de/studium/startup-center/</li>
+<li style="margin-bottom:0.5rem;">Technische Hochschule Ingolstadt (2026). ACE²-EU, Applied, Connected, Entrepreneurial and Engaged European University. thi.de/forschung/transfer-an-der-thi/ace2eu/</li>
+<li style="margin-bottom:0.5rem;">THI Science (2026). Digitales Gründerzentrum brigk und brigkAIR. thi-science.de/projekte/digitales-gruenderzentrum-brigk-brigkair/</li>
+<li style="margin-bottom:0.5rem;">Bayerisches Hochschulinnovationsgesetz (BayHIG), Art. 57 Einstellungsvoraussetzungen für Professorinnen und Professoren; Übersicht der THI vom 28.02.2024.</li>
+<li style="margin-bottom:0.5rem;">Biggs, J., &amp; Tang, C. (2011). Teaching for Quality Learning at University. Open University Press. Kolb, D. A. (1984). Experiential Learning. Prentice Hall. Revans, R. (1980). Action Learning. Blond &amp; Briggs. Sarasvathy, S. D. (2001). Causation and effectuation. Academy of Management Review, 26(2). Ries, E. (2011). The Lean Startup. Crown Business. Blank, S. (2013). Why the lean start-up changes everything. Harvard Business Review, 91(5).</li>
+<li style="margin-bottom:0.5rem;">Eigene Unterlagen: Lehrevaluationen DHBW Stuttgart, Finanz- und Rechnungswesen, Sommersemester 2025 (evasys, n = 16) und Unternehmensführung, Sommersemester 2026 (evasys, n = 14); Publication Roadmap (Mai 2026) und Publikationsplan (Juli 2026); Konferenzarchiv 2020 bis 2027.</li>
+    </ol>
+  </div>
+</section>
+<section id="kontakt">
+  <div class="container">
+    <h2 class="section-title">Kontakt</h2>
+    <div class="section-bar"></div>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="contact-icon">@</div><div><strong style="color:var(--gold);">E-Mail</strong><p><a href="mailto:christian.neusser@me.com">christian.neusser@me.com</a></p></div></div>
+      <div class="contact-item"><div class="contact-icon">T</div><div><strong style="color:var(--gold);">Telefon</strong><p style="color:rgba(255,255,255,0.85);">0151 62 50 08 02</p></div></div>
+      <div class="contact-item"><div class="contact-icon">A</div><div><strong style="color:var(--gold);">Adresse</strong><p style="color:rgba(255,255,255,0.85);">Helene-Lange-Straße 28, 91056 Erlangen</p></div></div>
+      <div class="contact-item"><div class="contact-icon">O</div><div><strong style="color:var(--gold);">ORCID</strong><p><a href="https://orcid.org/0000-0001-6484-1421" target="_blank">0000-0001-6484-1421</a></p></div></div>
+      <div class="contact-item"><div class="contact-icon">W</div><div><strong style="color:var(--gold);">Website</strong><p><a href="https://www.christian-neusser.de" target="_blank">www.christian-neusser.de</a></p></div></div>
+      <div class="contact-item"><div class="contact-icon">✎</div><div><strong style="color:var(--gold);">Stellenausschreibung</strong><p style="color:rgba(255,255,255,0.85);">Professur (m/w/d) Entrepreneurship, Technische Hochschule Ingolstadt, Fakultät Wirtschaftsingenieurwesen, Kennziffer 2016, Besoldungsgruppe W2, unbefristetes Beamtenverhältnis, Bewerbungsfrist 14.09.2026</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Dr. Christian Neusser, DBA, MBA, MSc &nbsp;·&nbsp; Bewerbung Professur Entrepreneurship, Technische Hochschule Ingolstadt &nbsp;·&nbsp; Kennziffer 2016 &nbsp;·&nbsp; Frist 14.09.2026</p>
+  <p style="margin-top:0.5rem;">
+    <a href="mailto:christian.neusser@me.com">christian.neusser@me.com</a> &nbsp;·&nbsp;
+    ORCID <a href="https://orcid.org/0000-0001-6484-1421">0000-0001-6484-1421</a> &nbsp;·&nbsp;
+    <a href="https://www.christian-neusser.de">www.christian-neusser.de</a>
+  </p>
+</footer>
+<script>
+  function toggleMenu() {
+    document.getElementById('ham').classList.toggle('active');
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('ham').classList.remove('active');
+    document.getElementById('navMenu').classList.remove('open');
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
